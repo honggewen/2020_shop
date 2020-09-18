@@ -32,9 +32,15 @@
     name: 'FooterGuide',
 
     methods: {
-      // 编程式路由跳转
+      
       goto (path) {
-        this.$router.replace(path)
+        // 方案: 如果点击当前项， 没有任务效果
+        if (path !== this.$route.path) {
+          // 编程式路由跳转
+          this.$router.replace(path)
+        } else {
+          window.location = path   // 发送一般的http请求 => 整个页面会刷新
+        }
       }
     }
   }

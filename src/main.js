@@ -4,6 +4,7 @@ import router from './router'
 import VueResource from 'vue-resource'
 
 import Header from './components/Header/Header.vue'
+import store from './vuex/store'
 
 import 'lib-flexible'
 
