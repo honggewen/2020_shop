@@ -16,4 +16,5 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router, // 所有组件都能看到 $router 和 $route   <router-link>
+  store
 }).$mount('#app')

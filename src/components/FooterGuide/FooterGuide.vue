@@ -34,12 +34,16 @@
     methods: {
       
       goto (path) {
-        // 方案: 如果点击当前项， 没有任务效果
-        if (path !== this.$route.path) {
-          // 编程式路由跳转
+        // 方案1:如果点击当前项，没有任务效果
+        // if (path !== this.$route.push) {
+        //   this.$router.replace(path)
+        // }
+        
+        // 方案2:如果点击当前项，刷新页面
+        if (path !== this.$route.push) {
           this.$router.replace(path)
         } else {
-          window.location = path   // 发送一般的http请求 => 整个页面会刷新
+          window.location = path  // 发送一般的http请求==>整个界面会刷新显示
         }
       }
     }

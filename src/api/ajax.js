@@ -21,7 +21,7 @@ instance.interceptors.request.use((config) => {
   // 3.对请求体参数进行urlencode处理，而不使用默认的json方式（后台接口不支持）
   const data = config.data
   if (data instanceof Object) {
-    config.data = qs.stringify(data)
+    config.data = qs.stringify(data) 
   }
   return config
 })
@@ -29,7 +29,7 @@ instance.interceptors.request.use((config) => {
 // 响应拦截器
 instance.interceptors.response.use(
   response => {
-
+    console.log('res interceptor')
     // return response
     // 2.异步请求成功的数据不是response,而是response.data
     return response.data
@@ -38,7 +38,7 @@ instance.interceptors.response.use(
 
     // return Promise.reject(error)
     // 1.统一处理请求异常
-    alert('请求失败' + error.message)
+    // alert('请求失败' + error.message)
     return new Promise(() => {
       // 返回一个pending状态的promise => 终端promise
     })
