@@ -7,7 +7,7 @@ module.exports = {
   // lintOnSave: false, /// 关闭Eslint的规则
   css: { // 添加postcss
     loaderOptions: {
-      postcs: {
+      postcss: {
         plugins: [
           px2rem({
             remUnit: 37.5  //设计稿等分后的rem值375/10
@@ -27,7 +27,16 @@ module.exports = {
     }
   },
 
-  deServer: {
-
+  devServer: {
+    proxy: {
+      // 处理以/api开头路径的请求
+      '/api': {
+        target: 'http://localhost:4000',
+        pathRewrite: {
+          '^/api' : '' // 转发请求时去除路径前面的api
+        },
+        changeOrigin: true, // 支持跨域, 如果协议/主机也不相同 必须加上
+      }
+    }
   }
 }
